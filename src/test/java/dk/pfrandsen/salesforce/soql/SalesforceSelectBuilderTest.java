@@ -31,8 +31,8 @@ public class SalesforceSelectBuilderTest {
         assertEquals("select fld from Account", builder.build());
         builder.addId("x");
         assertEquals("select fld from Account where id = 'x'", builder.build());
-        builder.addId("y");
-        assertEquals("select fld from Account where id in ['x', 'y']", builder.build());
+        builder.addId("y", "z");
+        assertEquals("select fld from Account where id in ['x', 'y', 'z']", builder.build());
     }
 
     @Test
@@ -48,6 +48,13 @@ public class SalesforceSelectBuilderTest {
         assertEquals("select f1, f2, r.f3, r.f4, m.f5 from Account where id = 'x'", builder.build());
         builder.addId("y");
         assertEquals("select f1, f2, r.f3, r.f4, m.f5 from Account where id in ['x', 'y']", builder.build());
+    }
+
+    @Test
+    public void testLimit() {
+        SalesforceSelectBuilder builder = new SalesforceSelectBuilder();
+        builder.setsObject("Account").addFields(Arrays.asList("f1", "f2")).setLimit(3);
+        assertEquals("select f1, f2 from Account limit = 3", builder.build());
     }
 
 }
