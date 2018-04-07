@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.Iterator;
 
+/**
+ * Utility to remove/replace prefix in object keys in json tree.
+ */
 public final class NSMap {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -26,6 +29,16 @@ public final class NSMap {
         return transform(src, prefix, null);
     }
 
+    /**
+     * Copy JSON tree while replacing prefix from all object keys that starts with given prefix. If replacing prefix in
+     * key results in a name clash with another key in the same object node, then the last key seen will win
+     * (other key/value is lost). In case of key clash expect unpredictable results in terms of which value is lost.
+     *
+     * @param src source json tree
+     * @param prefix prefix to replace in object keys
+     * @param replace string to replace prefix with
+     * @return copy of source tree with prefix replaced in object keys
+     */
     public static JsonNode transform(JsonNode src, String prefix, String replace) {
         if (src == null) {
             return null;
@@ -74,7 +87,7 @@ public final class NSMap {
      * Replace prefix in string.
      *
      * @param prefix prefix to be replaced
-     * @param replace string to replece prefix with
+     * @param replace string to replace prefix with
      * @param value string to replace prefix in
      * @return value if value is null or does not start with prefix, else value with prefix replaced
      */
