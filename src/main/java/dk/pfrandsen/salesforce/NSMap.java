@@ -78,7 +78,7 @@ public final class NSMap {
      */
     public static String rm(String prefix, String value) {
         if (prefix == null || prefix.length() == 0 || value == null) {
-            return null;
+            return value;
         }
         return value.startsWith(prefix) ? value.substring(prefix.length()) : value;
     }
@@ -86,14 +86,14 @@ public final class NSMap {
     /**
      * Replace prefix in string.
      *
-     * @param prefix prefix to be replaced
-     * @param replace string to replace prefix with
+     * @param prefix prefix to be replaced (if null or empty value is not changed)
+     * @param replace string to replace prefix with (if null or empty prefix will be removed and not replaced)
      * @param value string to replace prefix in
      * @return value if value is null or does not start with prefix, else value with prefix replaced
      */
     public static String map(String prefix, String replace, String value) {
         if (prefix == null || prefix.length() == 0 || value == null) {
-            return null;
+            return value;
         }
         if (replace == null || replace.length() == 0) {
             return value.startsWith(prefix) ? value.substring(prefix.length()) : value;
