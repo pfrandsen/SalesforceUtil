@@ -1,0 +1,31 @@
+{
+    "totalSize": 1,
+    "done": true,
+    "records": [
+        {
+            "attributes": {
+                "type": "Message__c",
+                "url": "/services/data/v42.0/sobjects/Message__c/a0P0E000001Ds4wUAC"
+            },
+            "Id": "a0P0E005001Ds7wUAC",
+            "Pre_Subject__c": "sub",
+            "Pre_Content__c": "the text",
+            "Pre_Parent_Message__r": {
+                "Pre_Id__c": "abc",
+                "Id": "xyz"
+            },
+            "Account__r": {
+                "attributes": {
+                    "type": "Account",
+                    "url": "/services/data/v42.0/sobjects/Account/0010E00000B8M1uQAF"
+                },
+                "Name": "JMr. Anderson",
+                "Pre_Id__c": "part801147",
+                "Public_Id__c": "12345678",
+                "Id": "abc"
+            },
+            "Pre_Valid_From__c": "2017-10-20",
+            "Pre_Valid_To__c": null
+        }
+    ]
+}
